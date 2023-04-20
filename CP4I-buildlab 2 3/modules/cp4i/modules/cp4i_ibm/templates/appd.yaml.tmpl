@@ -1,0 +1,26 @@
+apiVersion: appconnect.ibm.com/v1beta1
+kind: DesignerAuthoring
+metadata:
+  name: des-01-quickstart-marvic
+  labels:
+    app: frontend
+  namespace: ${ namespace }
+spec:
+  license:
+    accept: true
+    license: L-MSST-58UM6D
+    use: CloudPakForIntegrationNonProduction
+  couchdb:
+    storage:
+      size: 10Gi
+      type: persistent-claim
+      class: ${ storage_class_rwo }
+    replicas: 1
+  designerMappingAssist:
+    incrementalLearning:
+      schedule: Every 15 days
+    enabled: true
+  designerFlowsOperationMode: local
+  replicas: 1
+  useCommonServices: true
+  version: 12.0-lts
